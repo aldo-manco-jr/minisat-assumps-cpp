@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-2f415ecb38d5d1227137.json",
+					"jsonFile" : "directory-.-Debug-a58f0a99c468cfb2803b.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "2.6"
@@ -46,28 +46,28 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "minisat-lib-shared::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-minisat-lib-shared-Debug-6fa07e54ffdd2350dee0.json",
+					"jsonFile" : "target-minisat-lib-shared-Debug-f92da2fe227094027a60.json",
 					"name" : "minisat-lib-shared",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "minisat-lib-static::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-minisat-lib-static-Debug-aef3be17bed4db2ff764.json",
+					"jsonFile" : "target-minisat-lib-static-Debug-cb118d6577451030e2ec.json",
 					"name" : "minisat-lib-static",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "minisat_core::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-minisat_core-Debug-070a1782f86801bce403.json",
+					"jsonFile" : "target-minisat_core-Debug-9b9ea0156c6060a6867c.json",
 					"name" : "minisat_core",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "minisat_simp::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-minisat_simp-Debug-064704981059f8ff8f20.json",
+					"jsonFile" : "target-minisat_simp-Debug-7281292f0b33b350531d.json",
 					"name" : "minisat_simp",
 					"projectIndex" : 0
 				}
