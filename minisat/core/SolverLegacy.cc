@@ -23,9 +23,9 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include "minisat/mtl/Alg.h"
 #include "minisat/mtl/Sort.h"
 #include "minisat/utils/System.h"
-#include "minisat/core/Solver.h"
+#include "minisat/core/SolverLegacy.h"
 
-using namespace Minisat;
+using namespace Legacy;
 
 //=================================================================================================
 // Options:
@@ -51,7 +51,7 @@ static IntOption     opt_min_learnts_lim   (_cat, "min-learnts", "Minimum learnt
 // Constructor/Destructor:
 
 
-Legacy::Solver::Solver() :
+Solver::Solver() :
 
     // Parameters (user settable):
     //
@@ -104,7 +104,7 @@ Legacy::Solver::Solver() :
 {}
 
 
-Legacy::Solver::~Solver()
+Solver::~Solver()
 {
 }
 
@@ -116,7 +116,7 @@ Legacy::Solver::~Solver()
 // Creates a new SAT variable in the solver. If 'decision' is cleared, variable will not be
 // used as a decision variable (NOTE! This has effects on the meaning of a SATISFIABLE result).
 //
-Var Legacy::Solver::newVar(lbool upol, bool dvar)
+Var Solver::newVar(lbool upol, bool dvar)
 {
     Var v;
     if (free_vars.size() > 0){
@@ -142,7 +142,7 @@ Var Legacy::Solver::newVar(lbool upol, bool dvar)
 
 // Note: at the moment, only unassigned variable will be released (this is to avoid duplicate
 // releases of the same variable).
-void Legacy::Solver::releaseVar(Lit l)
+void Solver::releaseVar(Lit l)
 {
     if (value(l) == l_Undef){
         addClause(l);
@@ -151,7 +151,7 @@ void Legacy::Solver::releaseVar(Lit l)
 }
 
 
-bool Legacy::Solver::addClause_(vec<Lit>& ps)
+bool Solver::addClause_(vec<Lit>& ps)
 {
     assert(decisionLevel() == 0);
     if (!ok) return false;
@@ -181,7 +181,7 @@ bool Legacy::Solver::addClause_(vec<Lit>& ps)
 }
 
 
-void Legacy::Solver::attachClause(CRef cr){
+void Solver::attachClause(CRef cr){
     const Clause& c = ca[cr];
     assert(c.size() > 1);
     watches[~c[0]].push(Watcher(cr, c[1]));
@@ -191,7 +191,7 @@ void Legacy::Solver::attachClause(CRef cr){
 }
 
 
-void Legacy::Solver::detachClause(CRef cr, bool strict){
+void Solver::detachClause(CRef cr, bool strict){
     const Clause& c = ca[cr];
     assert(c.size() > 1);
     
@@ -209,7 +209,7 @@ void Legacy::Solver::detachClause(CRef cr, bool strict){
 }
 
 
-void Legacy::Solver::removeClause(CRef cr) {
+void Solver::removeClause(CRef cr) {
     Clause& c = ca[cr];
     detachClause(cr);
     // Don't leave pointers to free'd memory!
@@ -219,7 +219,7 @@ void Legacy::Solver::removeClause(CRef cr) {
 }
 
 
-bool Legacy::Solver::satisfied(const Clause& c) const {
+bool Solver::satisfied(const Clause& c) const {
     for (int i = 0; i < c.size(); i++)
         if (value(c[i]) == l_True)
             return true;
@@ -228,7 +228,7 @@ bool Legacy::Solver::satisfied(const Clause& c) const {
 
 // Revert to the state at given level (keeping all assignment at 'level' but not beyond).
 //
-void Legacy::Solver::cancelUntil(int level) {
+void Solver::cancelUntil(int level) {
     if (decisionLevel() > level){
         for (int c = trail.size()-1; c >= trail_lim[level]; c--){
             Var      x  = var(trail[c]);
@@ -246,7 +246,7 @@ void Legacy::Solver::cancelUntil(int level) {
 // Major methods:
 
 
-Lit Legacy::Solver::pickBranchLit()
+Lit Solver::pickBranchLit()
 {
     Var next = var_Undef;
 
@@ -293,7 +293,7 @@ Lit Legacy::Solver::pickBranchLit()
 |        rest of literals. There may be others from the same level though.
 |  
 |________________________________________________________________________________________________@*/
-void Legacy::Solver::analyze(CRef confl, vec<Lit>& out_learnt, int& out_btlevel)
+void Solver::analyze(CRef confl, vec<Lit>& out_learnt, int& out_btlevel)
 {
     int pathC = 0;
     Lit p     = lit_Undef;
@@ -385,7 +385,7 @@ void Legacy::Solver::analyze(CRef confl, vec<Lit>& out_learnt, int& out_btlevel)
 
 
 // Check if 'p' can be removed from a conflict clause.
-bool Legacy::Solver::litRedundant(Lit p)
+bool Solver::litRedundant(Lit p)
 {
     enum { seen_undef = 0, seen_source = 1, seen_removable = 2, seen_failed = 3 };
     assert(seen[var(p)] == seen_undef || seen[var(p)] == seen_source);
@@ -453,7 +453,7 @@ bool Legacy::Solver::litRedundant(Lit p)
 |    Calculates the (possibly empty) set of assumptions that led to the assignment of 'p', and
 |    stores the result in 'out_conflict'.
 |________________________________________________________________________________________________@*/
-void Legacy::Solver::analyzeFinal(Lit p, LSet& out_conflict)
+void Solver::analyzeFinal(Lit p, LSet& out_conflict)
 {
     out_conflict.clear();
     out_conflict.insert(p);
@@ -483,7 +483,7 @@ void Legacy::Solver::analyzeFinal(Lit p, LSet& out_conflict)
 }
 
 
-void Legacy::Solver::uncheckedEnqueue(Lit p, CRef from)
+void Solver::uncheckedEnqueue(Lit p, CRef from)
 {
     assert(value(p) == l_Undef);
     assigns[var(p)] = lbool(!sign(p));
@@ -503,7 +503,7 @@ void Legacy::Solver::uncheckedEnqueue(Lit p, CRef from)
 |    Post-conditions:
 |      * the propagation queue is empty, even if there was a conflict.
 |________________________________________________________________________________________________@*/
-CRef Legacy::Solver::propagate()
+CRef Solver::propagate()
 {
     CRef    confl     = CRef_Undef;
     int     num_props = 0;
@@ -578,7 +578,7 @@ struct reduceDB_lt {
     bool operator () (CRef x, CRef y) { 
         return ca[x].size() > 2 && (ca[y].size() == 2 || ca[x].activity() < ca[y].activity()); } 
 };
-void Legacy::Solver::reduceDB()
+void Solver::reduceDB()
 {
     int     i, j;
     double  extra_lim = cla_inc / learnts.size();    // Remove any clause below this activity
@@ -598,7 +598,7 @@ void Legacy::Solver::reduceDB()
 }
 
 
-void Legacy::Solver::removeSatisfied(vec<CRef>& cs)
+void Solver::removeSatisfied(vec<CRef>& cs)
 {
     int i, j;
     for (i = j = 0; i < cs.size(); i++){
@@ -620,7 +620,7 @@ void Legacy::Solver::removeSatisfied(vec<CRef>& cs)
 }
 
 
-void Legacy::Solver::rebuildOrderHeap()
+void Solver::rebuildOrderHeap()
 {
     vec<Var> vs;
     for (Var v = 0; v < nVars(); v++)
@@ -638,7 +638,7 @@ void Legacy::Solver::rebuildOrderHeap()
 |    Simplify the clause database according to the current top-level assigment. Currently, the only
 |    thing done here is the removal of satisfied clauses, but more things can be put here.
 |________________________________________________________________________________________________@*/
-bool Legacy::Solver::simplify()
+bool Solver::simplify()
 {
     assert(decisionLevel() == 0);
 
@@ -699,7 +699,7 @@ bool Legacy::Solver::simplify()
 |    all variables are decision variables, this means that the clause set is satisfiable. 'l_False'
 |    if the clause set is unsatisfiable. 'l_Undef' if the bound on number of conflicts is reached.
 |________________________________________________________________________________________________@*/
-lbool Legacy::Solver::search(int nof_conflicts)
+lbool Solver::search(int nof_conflicts)
 {
     assert(ok);
     int         backtrack_level;
@@ -793,7 +793,7 @@ lbool Legacy::Solver::search(int nof_conflicts)
 }
 
 
-double Legacy::Solver::progressEstimate() const
+double Solver::progressEstimate() const
 {
     double  progress = 0;
     double  F = 1.0 / nVars();
@@ -836,7 +836,7 @@ static double luby(double y, int x){
 }
 
 // NOTE: assumptions passed in member-variable 'assumptions'.
-lbool Legacy::Solver::solve_()
+lbool Solver::solve_()
 {
     model.clear();
     conflict.clear();
@@ -884,7 +884,7 @@ lbool Legacy::Solver::solve_()
 }
 
 
-bool Legacy::Solver::implies(const vec<Lit>& assumps, vec<Lit>& out)
+bool Solver::implies(const vec<Lit>& assumps, vec<Lit>& out)
 {
     trail_lim.push(trail.size());
     for (int i = 0; i < assumps.size(); i++){
@@ -925,7 +925,7 @@ static Var mapVar(Var x, vec<Var>& map, Var& max)
 }
 
 
-void Legacy::Solver::toDimacs(FILE* f, Clause& c, vec<Var>& map, Var& max)
+void Solver::toDimacs(FILE* f, Clause& c, vec<Var>& map, Var& max)
 {
     if (satisfied(c)) return;
 
@@ -936,7 +936,7 @@ void Legacy::Solver::toDimacs(FILE* f, Clause& c, vec<Var>& map, Var& max)
 }
 
 
-void Legacy::Solver::toDimacs(const char *file, const vec<Lit>& assumps)
+void Solver::toDimacs(const char *file, const vec<Lit>& assumps)
 {
     FILE* f = fopen(file, "wr");
     if (f == NULL)
@@ -946,7 +946,7 @@ void Legacy::Solver::toDimacs(const char *file, const vec<Lit>& assumps)
 }
 
 
-void Legacy::Solver::toDimacs(FILE* f, const vec<Lit>& assumps)
+void Solver::toDimacs(FILE* f, const vec<Lit>& assumps)
 {
     // Handle case when solver is in contradictory state:
     if (!ok){
@@ -988,7 +988,7 @@ void Legacy::Solver::toDimacs(FILE* f, const vec<Lit>& assumps)
 }
 
 
-void Legacy::Solver::printStats() const
+void Solver::printStats() const
 {
     double cpu_time = cpuTime();
     double mem_used = memUsedPeak();
@@ -1005,7 +1005,7 @@ void Legacy::Solver::printStats() const
 //=================================================================================================
 // Garbage Collection methods:
 
-void Legacy::Solver::relocAll(ClauseAllocator& to)
+void Solver::relocAll(ClauseAllocator& to)
 {
     // All watchers:
     //
@@ -1052,7 +1052,7 @@ void Legacy::Solver::relocAll(ClauseAllocator& to)
 }
 
 
-void Legacy::Solver::garbageCollect()
+void Solver::garbageCollect()
 {
     // Initialize the next region to a size corresponding to the estimated utilization degree. This
     // is not precise but should avoid some unnecessary reallocations for the new region:
