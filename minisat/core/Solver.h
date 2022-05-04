@@ -8,7 +8,7 @@
 #include "minisat/mtl/Vec.h"
 #include "minisat/mtl/Heap.h"
 #include "minisat/mtl/Alg.h"
-#include "minisat/mtl/IntMap.h"
+#include "minisat/mtl/IntTypes.h"
 #include "minisat/utils/Options.h"
 #include "minisat/core/SolverTypes.h"
 #include<iostream>
