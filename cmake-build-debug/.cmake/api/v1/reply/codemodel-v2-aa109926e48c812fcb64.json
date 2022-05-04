@@ -46,14 +46,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "minisat-lib-shared::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-minisat-lib-shared-Debug-7d73d41b61edd55d858a.json",
+					"jsonFile" : "target-minisat-lib-shared-Debug-f92da2fe227094027a60.json",
 					"name" : "minisat-lib-shared",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "minisat-lib-static::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-minisat-lib-static-Debug-707bcd3466f500c9f0ef.json",
+					"jsonFile" : "target-minisat-lib-static-Debug-cb118d6577451030e2ec.json",
 					"name" : "minisat-lib-static",
 					"projectIndex" : 0
 				},
