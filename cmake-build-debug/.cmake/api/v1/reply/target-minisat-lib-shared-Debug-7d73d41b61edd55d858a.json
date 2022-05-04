@@ -163,13 +163,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "minisat/core/Solver.cc",
+			"path" : "minisat/core/SolverLegacy.cc",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "minisat/core/SolverLegacy.cc",
+			"path" : "minisat/core/Solver.cc",
 			"sourceGroupIndex" : 0
 		},
 		{

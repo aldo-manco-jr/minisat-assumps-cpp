@@ -65,17 +65,17 @@ build CMakeFiles/minisat-lib-static.dir/minisat/utils/System.cc.o: CXX_COMPILER_
   OBJECT_DIR = CMakeFiles/minisat-lib-static.dir
   OBJECT_FILE_DIR = CMakeFiles/minisat-lib-static.dir/minisat/utils
 
-build CMakeFiles/minisat-lib-static.dir/minisat/core/Solver.cc.o: CXX_COMPILER__minisat-lib-static_Debug /home/aldo/Desktop/program_analysis/project/minisat-master/minisat/core/Solver.cc || cmake_object_order_depends_target_minisat-lib-static
+build CMakeFiles/minisat-lib-static.dir/minisat/core/SolverLegacy.cc.o: CXX_COMPILER__minisat-lib-static_Debug /home/aldo/Desktop/program_analysis/project/minisat-master/minisat/core/SolverLegacy.cc || cmake_object_order_depends_target_minisat-lib-static
   DEFINES = -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
-  DEP_FILE = CMakeFiles/minisat-lib-static.dir/minisat/core/Solver.cc.o.d
+  DEP_FILE = CMakeFiles/minisat-lib-static.dir/minisat/core/SolverLegacy.cc.o.d
   FLAGS = -g
   INCLUDES = -I/home/aldo/Desktop/program_analysis/project/minisat-master
   OBJECT_DIR = CMakeFiles/minisat-lib-static.dir
   OBJECT_FILE_DIR = CMakeFiles/minisat-lib-static.dir/minisat/core
 
-build CMakeFiles/minisat-lib-static.dir/minisat/core/SolverLegacy.cc.o: CXX_COMPILER__minisat-lib-static_Debug /home/aldo/Desktop/program_analysis/project/minisat-master/minisat/core/SolverLegacy.cc || cmake_object_order_depends_target_minisat-lib-static
+build CMakeFiles/minisat-lib-static.dir/minisat/core/Solver.cc.o: CXX_COMPILER__minisat-lib-static_Debug /home/aldo/Desktop/program_analysis/project/minisat-master/minisat/core/Solver.cc || cmake_object_order_depends_target_minisat-lib-static
   DEFINES = -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
-  DEP_FILE = CMakeFiles/minisat-lib-static.dir/minisat/core/SolverLegacy.cc.o.d
+  DEP_FILE = CMakeFiles/minisat-lib-static.dir/minisat/core/Solver.cc.o.d
   FLAGS = -g
   INCLUDES = -I/home/aldo/Desktop/program_analysis/project/minisat-master
   OBJECT_DIR = CMakeFiles/minisat-lib-static.dir
@@ -97,7 +97,7 @@ build CMakeFiles/minisat-lib-static.dir/minisat/simp/SimpSolver.cc.o: CXX_COMPIL
 #############################################
 # Link the static library libminisat.a
 
-build libminisat.a: CXX_STATIC_LIBRARY_LINKER__minisat-lib-static_Debug CMakeFiles/minisat-lib-static.dir/minisat/utils/Options.cc.o CMakeFiles/minisat-lib-static.dir/minisat/utils/System.cc.o CMakeFiles/minisat-lib-static.dir/minisat/core/Solver.cc.o CMakeFiles/minisat-lib-static.dir/minisat/core/SolverLegacy.cc.o CMakeFiles/minisat-lib-static.dir/minisat/simp/SimpSolver.cc.o
+build libminisat.a: CXX_STATIC_LIBRARY_LINKER__minisat-lib-static_Debug CMakeFiles/minisat-lib-static.dir/minisat/utils/Options.cc.o CMakeFiles/minisat-lib-static.dir/minisat/utils/System.cc.o CMakeFiles/minisat-lib-static.dir/minisat/core/SolverLegacy.cc.o CMakeFiles/minisat-lib-static.dir/minisat/core/Solver.cc.o CMakeFiles/minisat-lib-static.dir/minisat/simp/SimpSolver.cc.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/minisat-lib-static.dir
   POST_BUILD = :
@@ -130,17 +130,17 @@ build CMakeFiles/minisat-lib-shared.dir/minisat/utils/System.cc.o: CXX_COMPILER_
   OBJECT_DIR = CMakeFiles/minisat-lib-shared.dir
   OBJECT_FILE_DIR = CMakeFiles/minisat-lib-shared.dir/minisat/utils
 
-build CMakeFiles/minisat-lib-shared.dir/minisat/core/Solver.cc.o: CXX_COMPILER__minisat-lib-shared_Debug /home/aldo/Desktop/program_analysis/project/minisat-master/minisat/core/Solver.cc || cmake_object_order_depends_target_minisat-lib-shared
+build CMakeFiles/minisat-lib-shared.dir/minisat/core/SolverLegacy.cc.o: CXX_COMPILER__minisat-lib-shared_Debug /home/aldo/Desktop/program_analysis/project/minisat-master/minisat/core/SolverLegacy.cc || cmake_object_order_depends_target_minisat-lib-shared
   DEFINES = -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Dminisat_lib_shared_EXPORTS
-  DEP_FILE = CMakeFiles/minisat-lib-shared.dir/minisat/core/Solver.cc.o.d
+  DEP_FILE = CMakeFiles/minisat-lib-shared.dir/minisat/core/SolverLegacy.cc.o.d
   FLAGS = -g -fPIC
   INCLUDES = -I/home/aldo/Desktop/program_analysis/project/minisat-master
   OBJECT_DIR = CMakeFiles/minisat-lib-shared.dir
   OBJECT_FILE_DIR = CMakeFiles/minisat-lib-shared.dir/minisat/core
 
-build CMakeFiles/minisat-lib-shared.dir/minisat/core/SolverLegacy.cc.o: CXX_COMPILER__minisat-lib-shared_Debug /home/aldo/Desktop/program_analysis/project/minisat-master/minisat/core/SolverLegacy.cc || cmake_object_order_depends_target_minisat-lib-shared
+build CMakeFiles/minisat-lib-shared.dir/minisat/core/Solver.cc.o: CXX_COMPILER__minisat-lib-shared_Debug /home/aldo/Desktop/program_analysis/project/minisat-master/minisat/core/Solver.cc || cmake_object_order_depends_target_minisat-lib-shared
   DEFINES = -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Dminisat_lib_shared_EXPORTS
-  DEP_FILE = CMakeFiles/minisat-lib-shared.dir/minisat/core/SolverLegacy.cc.o.d
+  DEP_FILE = CMakeFiles/minisat-lib-shared.dir/minisat/core/Solver.cc.o.d
   FLAGS = -g -fPIC
   INCLUDES = -I/home/aldo/Desktop/program_analysis/project/minisat-master
   OBJECT_DIR = CMakeFiles/minisat-lib-shared.dir
@@ -162,7 +162,7 @@ build CMakeFiles/minisat-lib-shared.dir/minisat/simp/SimpSolver.cc.o: CXX_COMPIL
 #############################################
 # Link the shared library libminisat.so.2.1.0
 
-build libminisat.so.2.1.0: CXX_SHARED_LIBRARY_LINKER__minisat-lib-shared_Debug CMakeFiles/minisat-lib-shared.dir/minisat/utils/Options.cc.o CMakeFiles/minisat-lib-shared.dir/minisat/utils/System.cc.o CMakeFiles/minisat-lib-shared.dir/minisat/core/Solver.cc.o CMakeFiles/minisat-lib-shared.dir/minisat/core/SolverLegacy.cc.o CMakeFiles/minisat-lib-shared.dir/minisat/simp/SimpSolver.cc.o | /usr/lib/x86_64-linux-gnu/libz.so
+build libminisat.so.2.1.0: CXX_SHARED_LIBRARY_LINKER__minisat-lib-shared_Debug CMakeFiles/minisat-lib-shared.dir/minisat/utils/Options.cc.o CMakeFiles/minisat-lib-shared.dir/minisat/utils/System.cc.o CMakeFiles/minisat-lib-shared.dir/minisat/core/SolverLegacy.cc.o CMakeFiles/minisat-lib-shared.dir/minisat/core/Solver.cc.o CMakeFiles/minisat-lib-shared.dir/minisat/simp/SimpSolver.cc.o | /usr/lib/x86_64-linux-gnu/libz.so
   LANGUAGE_COMPILE_FLAGS = -g
   LINK_LIBRARIES = -lz
   OBJECT_DIR = CMakeFiles/minisat-lib-shared.dir

@@ -41,6 +41,7 @@ add_definitions(-D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS)
 set(MINISAT_LIB_SOURCES
     minisat/utils/Options.cc
     minisat/utils/System.cc
+        minisat/core/SolverLegacy.cc
     minisat/core/Solver.cc
     minisat/simp/SimpSolver.cc)
 
