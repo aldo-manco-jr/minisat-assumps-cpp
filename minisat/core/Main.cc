@@ -125,7 +125,7 @@ int main(int argc, char** argv)
         if (S.verbosity > 0){
             S.printStats();
             printf("\n"); }
-        printf(ret == l_True ? "SATISFIABLE ALDO\n" : ret == l_False ? "UNSATISFIABLE\n" : "INDETERMINATE\n");
+        printf(ret == l_True ? "SATISFIABLE\n" : ret == l_False ? "UNSATISFIABLE\n" : "INDETERMINATE\n");
         if (res != NULL){
             if (ret == l_True){
                 fprintf(res, "SAT\n");
